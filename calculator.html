@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .calculator{
+            /* max-width: 200px; */
+            background-color: #191919;
+            padding: 1rem;
+        }
+        .calculator .input{
+            margin: auto;
+            padding: 5px;
+            padding-bottom: 2.5rem;
+        }
+        .calculator input{
+            padding: 1rem;
+            color: #ffffff;
+            outline: none;
+            border: none;
+            width: 100%;
+            background-color: #2a2a2c;
+
+        }
+        .boxes{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 0.5rem;
+        }
+        .box{
+            width: 40px;
+            height: 40px;
+            background-color: #2a2a2c;
+            border-radius: 50%;
+            color: #ffffff;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="input">
+            <input type="text">
+        </div>
+        <div class="boxes">
+            <div class="box box-1">7</div>
+            <div class="box box-2">8</div>
+            <div class="box box-3">9</div>
+            <div class="box box-4">/</div>
+            <div class="box box-5">4</div>
+            <div class="box box-6">5</div>
+            <div class="box box-7">6</div>
+            <div class="box box-8">x</div>
+            <div class="box box-9">1</div>
+            <div class="box box-10">2</div>
+            <div class="box box-11">3</div>
+            <div class="box box-12">-</div>
+            <div class="box box-13">0</div>
+            <div class="box box-14">.</div>
+            <div class="box box-15">=</div>
+            <div class="box box-16">+</div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script>
+        let box = document.querySelectorAll(".box");
+        let input = document.querySelector("input");
+        box.forEach(e=>{
+            e.addEventListener('click',()=>{
+                if(e.innerHTML == "="){
+                    if(input.value.includes("x")){
+                        input.value = input.value.replace("x","*")
+                    }
+                    input.value = eval(input.value);
+                    
+                }else{
+                    input.value += e.innerHTML;
+                }
+            })
+        })
+        // console.log(input);
+    </script>
+    
+</body>
+</html>
