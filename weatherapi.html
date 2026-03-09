@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather api</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            max-width: 200px;
+            padding: 1rem;
+            background-color: rgb(56, 56, 56);
+            color:#fff;
+        }
+        .weather-template{
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="weather-template">
+            <div class="upper-weather-template">
+                <img src="//cdn.weatherapi.com/weather/64x64/night/116.png" alt="">
+            </div>
+            <div class="lower-weather-template">
+                <div class="deg">20deg</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        let deg = document.querySelector(".deg")
+        let apiKey = "f82910fbc9b140ffb3c64814252608";
+        let city = "kathmandu";
+        let url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`;
+
+        fetch(url).then((response)=>{
+            console.log(response);
+            return response.json()
+        }).then((data)=>{
+            console.log(data);
+            deg.innerHTML = data.current.temp_c;
+        })
+    </script>
+</body>
+</html>
